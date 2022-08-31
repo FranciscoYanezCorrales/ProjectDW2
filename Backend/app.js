@@ -27,27 +27,17 @@ const swaggerSpec = {
 // Ejecutar Express (http)
 var app = express();
 
-//Views
-app.use(express.static('public'));
-app.use('/assets', express.static(__dirname + 'public/assets'));
-app.set('views', "./public/views");
-app.set('view engine', 'ejs');
-//index
-app.get('',(req,res)=>{
-    res.render('index')
-})
-
 // Cargar ficheros/rutas
-let document_routes = require('./routes/Document');
 let user_routes = require('./routes/User');
+let auth_router = require('./routes/Auth');
 /*let documenttype_routes = require('./routes/DocumentType');
-let user_routes = require('./routes/User');
 let role_routes = require('./routes/Role');
+let document_routes = require('./routes/Document');
 */
+
 // Middlewares
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 // CORS
 // Configurar cabeceras y cors
 app.use((req, res, next) => {
@@ -59,8 +49,9 @@ app.use((req, res, next) => {
 });
 
 // Añadir prefijos a rutas
-app.use('/api/v1/document', document_routes);
 app.use('/api/v1/user', user_routes);
+app.use('/api/v1/auth', auth_router);
+app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 
 // Exportar Modulo (fichero actual)
 module.exports = app;

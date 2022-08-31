@@ -10,10 +10,25 @@ var md_upload = multipart({uploadDir : './upload/articles'});
 
 //rutas de prueba
 router.get('/test-de-controlador', UserController.test);
+/** 
+ * @swagger
+ * components:
+ *  responses:
+ *      UnauthorizedError:
+ *          description: Access token is missing or invalid
+ */
+
 
 /**
  * @swagger
  * components:
+ *  securitySchemes:
+ *      BearerAuth:
+ *          type: http
+ *          scheme: bearer
+ *          bearerFormat: JWT
+ *  security:
+ *      - bearerAuth: []
  *  schemas:
  *      User:
  *          type: object
@@ -58,15 +73,17 @@ router.get('/test-de-controlador', UserController.test);
  *      responses:
  *          200:
  *              description: Object.
+ *          401:
+ *              $ref: '#/components/responses/UnauthorizedError'
  */
 
 
 
 //rutas Productivas
 router.post('/create', UserController.createUser);
-router.post('/login', UserController.login);
 
 //templates:
+/*
 router.get('/get-articles/:last?', UserController.getArticles);
 router.get('/get-article/:id', UserController.getArticle);
 router.put('/update-article/:id', UserController.updateArticle);
@@ -74,6 +91,6 @@ router.delete('/delete-article/:id', UserController.deleteArticle);
 router.post('/upload-image/:id', md_upload, UserController.upload);
 router.get('/get-image/:image', UserController.getImageArticle);
 router.get('/search/:search', UserController.searchArticle);
-
+*/
 
 module.exports = router;
