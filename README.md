@@ -1,11 +1,11 @@
 # Proyecto Ingeniería en Informática
 
 ### Members:
-* Martin Urquejo
-* Luis Guzman
-* Francisco Yañez
-* Kevin Fuenzalida
-* Eduardo Onetto
+* Martin Urquejo (Desarrollo Movil)
+* Luis Guzman (Desarrollo Movil)
+* Francisco Yañez (Desarrollo WEB - Desarrollo Movil)
+* Kevin Fuenzalida (Desarrollo WEB - Desarrollo Movil)
+* Eduardo Onetto (Desarrollo WEB - Desarrollo Movil)
 
 ### Requirements:
 
