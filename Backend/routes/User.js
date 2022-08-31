@@ -64,6 +64,7 @@ router.get('/test-de-controlador', UserController.test);
 
 //rutas Productivas
 router.post('/create', UserController.createUser);
+router.post('/login', UserController.login);
 
 //templates:
 router.get('/get-articles/:last?', UserController.getArticles);
